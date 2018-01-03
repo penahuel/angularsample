@@ -1,0 +1,8 @@
+.tin{
+    width: 15px;
+    height: 20px;
+    padding: 0;
+}
+.flight-list{
+    overflow: hidden
+}

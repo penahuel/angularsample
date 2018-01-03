@@ -1,0 +1,18 @@
+<div class="container log-modal">
+    <form (ngSubmit)="logIn()" [formGroup]="UserForm" novalidate>
+        <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.user]}">
+            <input class="form-control" type="text" placeholder="Username" formControlName="username">
+            <span class="help-block" *ngIf="errorMessages[this.index.user]">
+                {{ errorMessages[this.index.user] }}
+            </span>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.pass]}">
+            <input class="form-control" type="password" placeholder="Password" formControlName="password">
+            <span class="help-block" *ngIf="errorMessages[this.index.pass]">
+                {{ errorMessages[this.index.pass] }}
+            </span>
+        </div>
+        <a [routerLink]="['/register']" (click)="this.closeDialog()"><p>Register</p></a>
+        <button class="btn btn-primary" type="submit" [disabled]="!UserForm.valid">Log in</button>
+    </form>
+</div>

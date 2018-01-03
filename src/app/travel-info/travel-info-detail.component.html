@@ -1,0 +1,10 @@
+<div class="container centerdivs"
+  *ngIf='travelInfo'>
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="row">{{ travelInfo.title }}</div>
+    <div class="row">{{ travelInfo.destination }}</div>
+    <div class="row">{{ travelInfo.description }}</div>
+    <div class="row">{{ travelInfo.price }}</div>
+    <div class="row"><img class="imgs" [src]="travelInfo.img"/></div>
+  </div>
+</div>

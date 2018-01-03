@@ -1,0 +1,34 @@
+[
+    {
+        "id":1,
+        "origin": "Argentina",
+        "destination":"New Zealand",
+        "departureDate": "10-25-2017",
+        "arriveDate": "10-26-2017",
+        "cost":17000
+    },
+    {
+        "id":2,
+        "origin": "Argentina",
+        "destination":"Chile",
+        "departureDate": "10-25-2017",
+        "arriveDate": "10-26-2017",
+        "cost":7000
+    },
+    {
+        "id":3,
+        "origin": "Argentina",
+        "destination":"USA",
+        "departureDate": "10-25-2017",
+        "arriveDate": "10-26-2017",
+        "cost":12000
+    },
+    {
+        "id":4,
+        "origin": "Argentina",
+        "destination":"Spain",
+        "departureDate": "10-25-2017",
+        "arriveDate": "10-26-2017",
+        "cost":15000
+    }
+]

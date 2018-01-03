@@ -1,0 +1,11 @@
+.swidth{
+    width: 80px;
+}
+.btmcircle{
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
+.topcircle{
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+}

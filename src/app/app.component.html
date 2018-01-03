@@ -1,0 +1,30 @@
+<div name="header" id="container1" class="row">
+  <div name="logo" class="row">
+    <div class="col-sm-5 col-sm-offset-1">
+      <a [routerLink]="['/']"><img style="height: 100px; width: 520px;" src= '{{ logo }}'></a>
+    </div>
+    <div *ngIf="this.userLogged()" class="col-sm-1 col-sm-offset-5">
+      <button class="btn btn-primary topcircle swidth" (click)="this.userLogOut()">Log out</button>
+      <a [routerLink]="['/cart']"><button class="btn btn-secondary swidth btmcircle">{{ this.numberOfTickets[0] }}</button></a>
+    </div>
+    <div *ngIf="!this.userLogged()" class="col-sm-1 col-sm-offset-5">
+      <button class="btn btn-primary swidth topcircle" (click)="this.login()">Log in</button>
+      <a [routerLink]="['/register']"><button class="btn btn-secondary swidth btmcircle">Register</button></a>
+    </div>
+  </div>
+  <div name="navbar" class="row">
+    <nav class="navbar navbar-light col-sm-12" style="background-color: #e3f2fd;">
+        <div class='container-fluid'>
+          <ul class='nav navbar-nav'>
+            <li><a [routerLink]="['/travelInfoList']">Travel info list</a></li>
+            <li><a [routerLink]="['/flight-search']">Search for a flight</a></li>
+            <li *ngIf="this.userLogged()"><a [routerLink]="['/profile', {outlets: {profile: ['summary']}}]">Profile</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class='container'>
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>
+

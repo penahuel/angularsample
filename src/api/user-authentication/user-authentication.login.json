@@ -1,0 +1,9 @@
+{
+    "user":
+    {
+        "id" : "1",
+        "username" : "mr.potatoe",
+        "password" : "noPassword",
+        "token" : "aToken"
+    }
+}

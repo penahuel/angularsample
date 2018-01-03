@@ -1,0 +1,34 @@
+<div class="container" 
+  *ngIf="this.summary">
+  <div class="row">
+    <div class="col-sm-6">
+      Username:
+    </div>
+    <div class="col-sm-6">
+      {{ this.summary.username }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      Name:
+      <br/>
+      Birthday:
+      <br/>
+      mail:
+    </div>
+    <div class="col-sm-6">
+      {{ this.summary.name }}
+      <br/>
+      {{ this.summary.birthday }}
+      <br/>
+      {{ this.summary.mail }}
+    </div>
+  </div>
+  <div class="row"
+    *ngFor="let address of this.summary.addresses">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-6">
+      </div>
+  </div>
+</div>

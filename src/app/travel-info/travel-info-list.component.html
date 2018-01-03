@@ -1,0 +1,18 @@
+<div class='col-sm-11 col-sm-offset-1'
+  *ngIf= 'travelInfoList && travelInfoList.length'>
+    <div *ngFor='let travelInfo of travelInfoList' class="row rowpad rounddes">
+      <a [routerLink]="['/travelInfoList', travelInfo.travelInfoId]">  
+        <div class="col-sm-11">
+            <div class="row">
+              <img class="col-sm-12 ofimg" src="{{ travelInfo.img }}">
+            </div>
+            <div class="row desc">
+              <div class="col-sm-12">
+                <div class="row strokeme txtpad">{{ travelInfo.title}}</div>
+                <div class="row strokeme txtpad">{{ (travelInfo.description | slice:0:400)+'..' }}</div>
+              </div>
+            </div>
+          </div>
+        </a>
+    </div>
+</div>

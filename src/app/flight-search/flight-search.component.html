@@ -1,0 +1,41 @@
+<div class="col-sm-4 container">
+    <h3>Search flight</h3>
+    <form (ngSubmit)="SearchForFlights()" [formGroup]="FlightForm" novalidate>
+      <div class="form-group">
+        <input class="form-control" required type="text" placeholder="Origin" formControlName="origin">
+        <input class="form-control" required type="text" placeholder="Destination" formControlName="destination">
+        <input class="form-control" required type="text" placeholder="Date" formControlName="date">
+      </div>
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+<div class="col-sm-7 col-sm-offset-1 container flight-list"  >
+  <div *ngIf="flightSearchList && flightSearchList.length">
+    <div *ngFor="let flight of flightSearchList" class="row">
+      <div class="row">
+        {{ flight.origin }} to {{ flight.destination }}
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          Departure date: {{ flight.departureDate }} Arrival date: {{ flight.arriveDate }}
+        </div>  
+        <div class="col-sm-2">
+          <div class="row">
+            {{ flight.cost }}
+          </div>
+          <div class="row">
+            <div class="row">
+              <button class="btn btn-primary" type="button" (click)="this.addToCart(flight.id)">Add to cart</button>
+            </div>  
+            <div class="row">
+              <button class="btn tin" (click)="this.removeOne(flight.id)">-</button>
+              <input id="cuantity{{flight.id}}" class="tin" type="text" 
+                [(value)]="this.cuantityModel[flight.id]" [disabled]= true>
+              <button class="btn tin" (click)="this.addOne(flight.id)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

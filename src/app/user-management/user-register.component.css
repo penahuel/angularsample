@@ -1,0 +1,11 @@
+.regborder{
+    border:1px solid black;
+    border-radius: 25px;
+    padding: 25px;
+    padding-top: 0px;
+}
+legend{
+    text-align: center;
+    border: 0;
+    width: 200px;
+}

@@ -1,0 +1,134 @@
+<div class="container">
+  <form  (ngSubmit)="register()" [formGroup]="NewUserForm" novalidate>
+    <div class="form-group row">  
+      <div class="col-sm-8">
+        <fieldset class="regborder">
+          <legend>Personal Information</legend>
+          <div formGroupName="personalInformation">
+            <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.name]}">
+              <label for="name">Name and surname:</label> 
+              <input class="form-control" type="text" id="name"
+                placeholder="Name" formControlName="name">
+              <span class="help-block" *ngIf="errorMessages[this.index.name]">
+                {{ errorMessages[this.index.name] }}
+              </span>  
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.birth]}">
+              <label for="birthday">Birthday:</label> 
+              <input class="form-control" type="text" id="birthday"
+                placeholder="Birthday" formControlName="birthday">
+              <span class="help-block" *ngIf="errorMessages[this.index.birth]">
+                  {{ errorMessages[this.index.birth] }}
+              </span>  
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.email]}">
+              <label for="email">Email:</label> 
+              <input class="form-control" type="text" id="email" 
+                placeholder="Email" formControlName="email">
+              <span class="help-block" *ngIf="errorMessages[this.index.email]">
+                  {{ errorMessages[this.index.email] }}
+              </span>  
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">   
+          <div class="row">
+            <fieldset class="regborder">
+              <legend>User Information</legend>
+              <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.user]}">
+                <label for="username">Username:</label>   
+                <input class="form-control" type="text" id="username"
+                  placeholder="Username" formControlName="username">
+                <span class="help-block" *ngIf="errorMessages[this.index.user]">
+                  {{ errorMessages[this.index.user] }}
+                </span>
+              </div>
+              <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.pass]}">
+                <label for="password">Password:</label> 
+                <input class="form-control" type="password" id="password"
+                  placeholder="Password" formControlName="password">
+                <span class="help-block" *ngIf="errorMessages[this.index.pass]">
+                  {{ errorMessages[this.index.pass] }}
+                </span>
+              </div>
+              <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.rppass]}">
+                <label for="repeatpassword">Repeat password:</label>
+                <input class="form-control" type="password" id="repeatpassword"
+                  placeholder="Repeat Password" formControlName="repeatpassword">
+                <span class="help-block" *ngIf="errorMessages[this.index.rppass]">
+                  {{ errorMessages[this.index.rppass] }}
+                </span>
+              </div>
+            </fieldset>
+          </div>
+        </div> 
+      </div> 
+    </div>
+    <div class="row">
+      <div formArrayName="addresses" class="col-sm-4"
+        *ngFor="let address of addresses.controls; let i=index">
+        <div [formGroupName]="i">
+          <fieldset class="regborder">
+            <legend>Address Information{{ i +1 }}</legend>                  
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.ap + i*4]}">
+                  <label attr.for="{{'apartmentId' + i}}">Apartment:</label> 
+                  <input id="{{'apartmentId' + i}}" class="form-control" type="text"
+                    placeholder="Apartment" formControlName="apartment">
+                  <span class="help-block" *ngIf="errorMessages[this.index.ap + i*4]">
+                      {{ errorMessages[this.index.ap + i*4] }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.st + i*4]}">
+                  <label attr.for="{{'streetId' + i}}">Street:</label> 
+                  <input id="{{'streetId' + i}}" class="form-control" type="text"
+                    placeholder="Street" formControlName="street">
+                  <span class="help-block" *ngIf="errorMessages[this.index.st + i*4]">
+                      {{ errorMessages[this.index.st + i*4] }}
+                  </span>
+                </div>
+              </div>   
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.city + i*4]}">                 
+                  <label attr.for="{{'cityId' + i}}">City:</label> 
+                  <input id="{{'cityId' + i}}" class="form-control" type="text"
+                    placeholder="City" formControlName="city">
+                  <span class="help-block" *ngIf="errorMessages[this.index.city + i*4]">
+                      {{ errorMessages[this.index.city + i*4] }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group" [ngClass]="{'has-error': errorMessages[this.index.state + i*4]}">
+                  <label attr.for="{{'stateId' + i}}">State:</label> 
+                  <input id="{{'stateId' + i}}" class="form-control" type="text"
+                    placeholder="State" formControlName="state">
+                  <span class="help-block" *ngIf="errorMessages[this.index.state + i*4]">
+                      {{ errorMessages[this.index.state + i*4] }}
+                  </span>
+                </div> 
+              </div>
+            </div>    
+          </fieldset>
+        </div>   
+      </div>
+      <div class="col-sm-offset-9">
+        <button class="btn btn-primary btn-lg" style="margin-top:10px" type="submit"
+          [disabled]="!NewUserForm.valid">Register</button>
+      </div>
+      <div class="col-sm-offset-4" *ngIf="addMore">
+        <button class="btn btn-primary"
+                type="button"
+                [disabled]="!addresses.valid"
+                (click)="addAddress()">Add additional address</button>
+      </div>
+    </div>
+  </form>
+</div>
